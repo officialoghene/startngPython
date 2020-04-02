@@ -20,6 +20,7 @@ while True:
         dict = {fname: {'firstname': fname, 'lastname': lname,  'email': email, 'password': pwd}}
         users.update(dict)
         print(users[fname])
+        print(users)
     else:
         while True:
             pwd = input("Enter your preferred password >> ")
@@ -30,6 +31,8 @@ while True:
                 dict = {fname: {'firstname': fname, 'lastname': lname, 'email': email, 'password': pwd}}
                 users.update(dict)
                 print(users[fname])
+                print(users)
                 break
+        
 
 
