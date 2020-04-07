@@ -2,7 +2,7 @@ import random
 import string
 intro = """Enter firstname, lastname and email separated by coma(,)
         E.G >> Moses, Oghene, mosesoghene@gmail.com"""
-users = {}
+users = []
 def get(a, b):
     finit = a[:2]
     linit = b[-2:]
@@ -12,15 +12,22 @@ def get(a, b):
 
 while True:
     print(intro)
-    data = input("CRTL + C to close >> ")
+    data = input(">> ")
     fname, lname, email = data.split(", ")
     pwd = get(fname, lname)
-    prompt = input(f"Are you satisfied with password: {pwd}. Y/N").lower()
+    prompt = input(f"Are you satisfied with password: {pwd}. Y/N >> ").lower()
     if prompt == 'y':
-        dict = {fname: {'firstname': fname, 'lastname': lname,  'email': email, 'password': pwd}}
-        users.update(dict)
-        print(users[fname])
-        print(users)
+        dict = {"Username: " + fname: {'firstname': fname, 'lastname': lname,  'email': email, 'password': pwd}}
+        users.append(dict)
+        print(users[-1])
+        rerun = input("Do you want to enter another user? Y/N >> ").lower()
+        if rerun == "y":
+            continue
+        else:        
+            print("All Users: \n")      
+            for i in users:
+                print(i)
+            break
     else:
         while True:
             pwd = input("Enter your preferred password >> ")
@@ -28,11 +35,18 @@ while True:
                 print("password must be greater than 7 characters")
                 continue
             else:
-                dict = {fname: {'firstname': fname, 'lastname': lname, 'email': email, 'password': pwd}}
-                users.update(dict)
-                print(users[fname])
-                print(users)
-                break
+                dict = {"Username: " + fname: {'firstname': fname, 'lastname': lname, 'email': email, 'password': pwd}}
+                users.append(dict)
+                print(users[-1])
+                rerun = input("Do you want to enter another user? Y/N >> ").lower()
+                if rerun == "y":
+                    continue
+                else:   
+                    print("All Users: \n")         
+                    for i in users:
+                        print(i)
+                    break
+        break
         
 
 
